@@ -6,5 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('test');
 });
-Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
-Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+    Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
+});
