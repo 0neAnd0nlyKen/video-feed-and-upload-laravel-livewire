@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('video_path');
             $table->string('thumbnail_path')->nullable();
+            $table->integer('views')->default(0);
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
             $table->json('tags')->nullable();

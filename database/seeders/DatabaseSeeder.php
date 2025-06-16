@@ -18,6 +18,27 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password123'),
         ]);
+        
+        User::factory()->create([
+            'name' => 'Alice Smith',
+            'email' => 'alice@example.com',
+            'password' => bcrypt('password123'),
+        ]);
+        
+        User::factory()->create([
+            'name' => 'Bob Johnson',
+            'email' => 'bob@example.com',
+            'password' => bcrypt('password123'),
+        ]);
+        
+        User::factory()->create([
+            'name' => 'Charlie Lee',
+            'email' => 'charlie@example.com',
+            'password' => bcrypt('password123'),
+        ]);    
+        
+        $this->call(VideoSeeder::class);        
     }
 }
