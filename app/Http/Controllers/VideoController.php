@@ -13,7 +13,8 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::latest()->paginate(12); // or use ->get() for all
+        return view('videos.index', compact('videos'));
     }
 
     /**
@@ -37,7 +38,7 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        //
+        return view('videos.show', compact('video'));
     }
 
     /**
