@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -22,4 +23,22 @@ Route::post('/upload/thumbnail', function (Request $request) {
     ]);
     $path = $request->file('thumbnail')->store('thumbnails', 'public');
     return response()->json(['path' => $path, 'url' => Storage::url($path)]);
+});
+
+Route::post('/videos', function (Request $request) {
+    $data = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'user_id' => 'required|exists:users,id',
+        'video_path' => 'required|string',
+        'thumbnail_path' => 'nullable|string',
+        'likes' => 'nullable|integer',
+        'dislikes' => 'nullable|integer',
+        'tags' => 'nullable|array',
+    ]);
+    if (isset($data['tags']) && is_array($data['tags'])) {
+        $data['tags'] = json_encode($data['tags']);
+    }
+    $video = Video::create($data);
+    return response()->json($video, 201);
 });
