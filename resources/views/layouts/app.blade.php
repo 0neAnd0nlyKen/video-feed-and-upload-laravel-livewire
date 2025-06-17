@@ -12,6 +12,9 @@
             <div>
                 <a class="nav-link" href="{{ route('videos.index') }}">Video Feed</a>
             </div>
+            <div>
+                <a class="nav-link" href="{{ route('videos.upload') }}">Upload Video</a>
+            </div>
         </div>
     </nav>
     <main>

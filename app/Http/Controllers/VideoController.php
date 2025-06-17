@@ -64,4 +64,9 @@ class VideoController extends Controller
     {
         //
     }
+
+    public function upload()
+    {
+        return view('videos.upload');
+    }
 }

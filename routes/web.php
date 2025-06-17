@@ -15,5 +15,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
-    Route::get('/videos/upload', function () {return view('videos.upload');})->name('videos.upload');
+    Route::get('/upload', [VideoController::class, 'upload'])->name('videos.upload');
 });
